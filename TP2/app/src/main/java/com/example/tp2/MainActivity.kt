@@ -1,16 +1,14 @@
-package com.example.tp1
+package com.example.tp2
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-
 
 class MainActivity : Activity() {
 
@@ -31,6 +29,7 @@ class MainActivity : Activity() {
         val editText : TextView = findViewById(R.id.editText)
         val button : Button = findViewById(R.id.button)
         val secondButton : Button = findViewById(R.id.secondButton)
+        val thirdButton : Button = findViewById(R.id.thirdButton)
 
         // Waiting for the button to get clicked
         button.setOnClickListener {
@@ -45,6 +44,13 @@ class MainActivity : Activity() {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
+
+        thirdButton.setOnClickListener {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(cameraIntent)
+        }
+
+
 
 
     }
