@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CustomAdapter(private val dataSet: List<String>) :
+class CustomAdapter(private val dataSet: MutableList<String>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     /**
@@ -42,5 +42,12 @@ class CustomAdapter(private val dataSet: List<String>) :
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
+
+    //needed function for viewmodel
+    fun updateData(data: MutableList<String>){
+        dataSet.clear()
+        dataSet.addAll(data)
+        notifyDataSetChanged()
+    }
 
 }

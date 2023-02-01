@@ -6,16 +6,37 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.*
 import androidx.navigation.findNavController
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+
+
+class MyViewModel: ViewModel() {
+    val items = MutableLiveData<MutableList<String>>().apply {
+        value = mutableListOf("item 1", "item 2", "item 3")
+    }
+
+    fun addItem(item: String) {
+        items.value?.add(item)
+        items.value = items.value
+    }
+}
+
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +103,8 @@ class MainActivity : AppCompatActivity() {
 
         }
         */
+
+
 
 
 
